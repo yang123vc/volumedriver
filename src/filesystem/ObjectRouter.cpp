@@ -1173,6 +1173,16 @@ ObjectRouter::handle_resize_(const vfsprotocol::ResizeRequest& req)
 }
 
 void
+ObjectRouter::resize_local(const ObjectId& oid,
+                           size_t size)
+{
+    ObjectRegistrationPtr reg(object_registry_->find_throw(oid,
+                                                           IgnoreCache::F));
+    local_node_()->resize(reg->object(),
+                          size);
+}
+
+void
 ObjectRouter::unlink(const ObjectId& id)
 {
     LOG_INFO(id);

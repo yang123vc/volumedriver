@@ -190,6 +190,10 @@ public:
            uint64_t newsize);
 
     void
+    resize_local(const ObjectId& id,
+                 size_t newsize);
+
+    void
     unlink(const ObjectId& id);
 
     void
